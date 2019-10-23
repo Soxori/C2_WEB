@@ -20,6 +20,7 @@ export class Minesweeper {
             this.bombs = bombs;
 
         this.array = [];
+        this.bombLocation = [];
 
         for(let i = 0; i < rows; i++) {
             let k = [];
@@ -28,7 +29,16 @@ export class Minesweeper {
             }
             this.array.push(k);
         }
-        
+
+        for(let l = 0; l < bombs; l++) {
+        let x  = Math.floor(Math.random() * this.columns);
+        let y = Math.floor(Math.random() * this.rows);
+
+        let coordinate = new Coordinate(x,y);
+
+        this.bombLocation.push(coordinate);
+
+        }
 
     }
 
@@ -138,3 +148,10 @@ export class Minesweeper {
     }
 
 }
+
+    class Coordinate {
+        constructor(x,y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
