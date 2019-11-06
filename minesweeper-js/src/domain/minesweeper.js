@@ -50,8 +50,7 @@ export class Minesweeper {
      * @return {number} amount of bombs
      */
     _calculateDefaultBombs() {
-        let defaultBombs = 20;
-        return defaultBombs;
+        return 0;
     }
 
     /**
@@ -79,22 +78,32 @@ export class Minesweeper {
 
         if(this.isBombOnPosition(y+1, x) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y, x+1) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y+1, x+1) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y-1, x) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y, x-1) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y-1, x-1) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y+1, x-1) === true)
             surroundingBombs++;
+
         else if (this.isBombOnPosition(y-1, x+1) === true)
             surroundingBombs++;
+
             console.log(surroundingBombs);
+
         return surroundingBombs++;
+
     }
 
     /**
@@ -120,14 +129,14 @@ export class Minesweeper {
      * @param {number} y
      */
     reveal(x, y) {
-        if(this.isBombOnPosition(x,y) === true) {
-            this.isGameOver = true;
-        }
 
-        else if(this.didLoose === true) {
+        if(this.isBombOnPosition(x, y) === false)
+            this.array[y][x] = field.visible;
+
+        else if(this.isBombOnPosition(x,y) === true) 
+            this.isGameOver = true;
+        else
             this.array[y][x] = field.hidden;
-        }
-        this.array[y][x] = field.visible;
     }
 
     /**
@@ -139,16 +148,16 @@ export class Minesweeper {
     toggleFieldState(x, y) {
 
         if(this.array[y][x] == field.hidden)
-        this.array[y][x] = field.flag;
+            this.array[y][x] = field.flag;
 
         else if (this.array[y][x] == field.flag)
-        this.array[y][x] = field.question_mark;
+            this.array[y][x] = field.question_mark;
 
         else if (this.array[y][x] == field.question_mark)
-        this.array[y][x] = field.hidden;
+            this.array[y][x] = field.hidden;
         
         else
-        this.array[y][x] = field.visible;
+            this.array[y][x] = field.visible;
     
     }
 
@@ -159,7 +168,7 @@ export class Minesweeper {
      */
     didWin() {
         if(this.isGameOver === true)
-        return false;
+            return false;
     }
 
     /**
@@ -169,7 +178,7 @@ export class Minesweeper {
      */
     didLoose() {
         if(this.isGameOver === true)
-        return true;
+            return true;
     }
 
     /**
