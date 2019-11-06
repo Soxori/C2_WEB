@@ -79,28 +79,26 @@ export class Minesweeper {
         if(this.isBombOnPosition(y+1, x) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y, x+1) === true)
+        if (this.isBombOnPosition(y, x+1) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y+1, x+1) === true)
+        if (this.isBombOnPosition(y+1, x+1) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y-1, x) === true)
+        if (this.isBombOnPosition(y-1, x) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y, x-1) === true)
+        if (this.isBombOnPosition(y, x-1) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y-1, x-1) === true)
+        if (this.isBombOnPosition(y-1, x-1) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y+1, x-1) === true)
+        if (this.isBombOnPosition(y+1, x-1) === true)
             surroundingBombs++;
 
-        else if (this.isBombOnPosition(y-1, x+1) === true)
+        if (this.isBombOnPosition(y-1, x+1) === true)
             surroundingBombs++;
-
-            console.log(surroundingBombs);
 
         return surroundingBombs++;
 
