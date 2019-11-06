@@ -97,7 +97,7 @@ export class Minesweeper {
         if (this.isBombOnPosition(y+1, x-1) === true)
             surroundingBombs++;
 
-        if (this.isBombOnPosition(y-1, x+1) === true)
+        else if (this.isBombOnPosition(y-1, x+1) === true)
             surroundingBombs++;
 
         return surroundingBombs++;
