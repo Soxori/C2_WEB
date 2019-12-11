@@ -1,5 +1,5 @@
 import {Pexeso} from "../domain/Pexeso.js";
-import {Field} from "../domain/models/Field.js";
+import {field} from "../domain/models/field.js";
 
 export class PexesoGUI {
 
@@ -7,10 +7,12 @@ export class PexesoGUI {
      * @param {HTMLElement} container
      * @param {number} rows
      * @param {number} columns
+     * @param {number | null} bombs
      */
-    constructor(container, rows, columns) {
+    constructor(container, rows, columns, bombs = null) {
         this.container = container;
-        this.game = new Pexeso(rows, columns);
+        this.game = new Pexeso
+    (rows, columns, bombs);
     }
 
     /**
@@ -22,29 +24,24 @@ export class PexesoGUI {
         const container = document.createElement('div');
         const header = document.createElement('h2');
         const smallHeader  = document.createElement('h3');
-        
+
         if(this.game.didWin())
-            header.innerHTML = `Pexeso (<span class="green">Won</span>)`;
-        else if(this.game.didLoose())
-            header.innerHTML = `Pexeso (<span class="red">Lost</span>)`;
+            header.innerHTML = `Pexeso
+         (<span class="green">Won</span>)`;
         else
-            header.innerHTML = `Pexeso (<span class="orange">In Progress</span>)`;
-        
+            header.innerHTML = `Pexeso
+         (<span class="orange">In Progress</span>)`;
+
         const table = document.createElement('table');
 
-        for (let i = 0; i < this.game.rows; i++) {
+        for (let i = 0; i < 6; i++) {
             const row = document.createElement('tr');
-            for (let j = 0; j < this.game.columns; j++) {
+            for (let j = 0; j < 6; j++) {
                 const cell = document.createElement('td');
                 cell.innerHTML = this._getIcon(i, j);
                 cell.addEventListener('click', () => {
                     this.game.reveal(j, i);
                     this.draw();
-                });
-                cell.addEventListener('contextmenu', (e) => {
-                    this.game.toggleFieldState(j, i);
-                    this.draw();
-                    e.preventDefault()
                 });
 
                 row.appendChild(cell);
@@ -75,14 +72,23 @@ export class PexesoGUI {
      * @private
      */
     _getIcon(x, y) {
-        switch (this.game.getField(y, x).state) {
-            case 0:
-                return '<div class="hidden">&nbsp;</div>';  
-            case 1:
-                return `.  
-
-        }
+        if (this.game.isGameOver && this.game.isBombOnPosition(y, x))
+            return "";
+        else
+            switch (this.game.getField(x, y)) {
+                case field.hidden:
+                    return '<div class="hidden">&nbsp;</div>';
+                case field.visible:
+                    const amount = this.game.getAmountOfSurroundingBombs(x, y); //Return number
+                    return `
+                        <div class="empty">
+                            ${amount === 0 ? ' ' : amount}
+                        </div>
+                    `;
+            }
     }
 }
+
+
 
 

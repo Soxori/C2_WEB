@@ -1,5 +1,4 @@
-import {Field} from "./models/field.js";
-import {Pair} from "./Pair.js";
+import {field} from "./models/field.js";
 
 export class Pexeso {
 
@@ -8,45 +7,36 @@ export class Pexeso {
      * @param {number} columns
      * @param {number | null} bombs
      */
-    constructor(rows, columns) {
+    constructor(rows, columns, bombs) {
 
         this.rows = rows;
         this.columns = columns;
 
-        this.pair = new Pair(null,null);
         this.isGameOver = false;
 
-        let maxId = (this.rows * this.columns) / 2;
-        let idsArray = [];
-        for (let i = 0; i < maxId; i++) {
-            idsArray.push(i);
-            idsArray.push(i);
-        }
 
-        this.fields = [];
+        this.array = [];
 
-        for(let i = 0; i < rows; i++) {
-            let tempArray = [];
-            for(let j = 0; j < columns; j++) {
-                let tmp = Math.floor(Math.random() * idsArray.length);
-                tempArray.push(new Field(0,idsArray[tmp]));
-                idsArray.splice(tmp, 1);
+        for(let i = 0; i < 6; i++) {
+            let k = [];
+            for(let j = 0; j < 6; j++) {
+                k.push(field.hidden)
             }
-            rhis.fields.push(tempArray);
+            this.array.push(k);
         }
-        /*
-        this.bombLocation = [];
-        
-        for(let l = 0; l < bombs; l++) {
+
+        this.number = [];
+
+        for(let l = 0; l < 500; l++) {
             let x  = Math.floor(Math.random() * this.columns);
+            
             let y = Math.floor(Math.random() * this.rows);
 
             let coordinate = new Coordinate(x,y);
 
-            this.bombLocation.push(coordinate);
+            this.number.push(coordinate);
         }
-        console.log(this.bombLocation)
-        */
+        console.log(this.number)
     }
 
     /**
@@ -73,43 +63,16 @@ export class Pexeso {
     }
     
 
-    /*
+    /**
      * TODO: IMPLEMENT THIS
      * Returns how many bombs are around the field
      * @param {number} x
      * @param {number} y
      * @return {number}
-     
+     */
     getAmountOfSurroundingBombs(x, y) {
-        let surroundingBombs = 0;
-
-        if(this.isBombOnPosition(y+1, x) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y, x+1) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y+1, x+1) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y-1, x) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y, x-1) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y-1, x-1) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y+1, x-1) === true)
-            surroundingBombs++;
-
-        if (this.isBombOnPosition(y-1, x+1) === true)
-            surroundingBombs++;
-
-        return surroundingBombs++;
+        return 0;
     }
-    */
 
     /**
      * TODO: IMPLEMENT THIS
@@ -119,8 +82,8 @@ export class Pexeso {
      * @return {boolean}
      */
     isBombOnPosition(x, y) {
-        for(let i = 0; i < this.bombLocation.length; i++) {
-            if(this.bombLocation[i].x === x && this.bombLocation[i].y === y) 
+        for(let i = 0; i < this.number.length; i++) {
+            if(this.number[i].x === x && this.number[i].y === y) 
                 return true;
         }     
         return false;
@@ -134,33 +97,10 @@ export class Pexeso {
      * @param {number} y
      */
     reveal(x, y) {
-        if(this.pair.cell1 === null && this.pair.cell2 === null) {
-           this.pair.cell1 = this.fields[x][y].id;
-           this.revealCell(x,y);
-        }
-        else if(this.pair.cell2 === null) {
-            this.pair.cell2 = this.fields[x][y].id;
-            this.revealCell(x,y);
 
-            if (this.pair.isPairEqual ()) {
-                for (let i = 0; i < rows; i++) {
-                    for(let j = 0; j < columns; j++) {
-                        if(this.fields[i][j] === this.pair.cell1) {
-                            this.fields[i][j].state = 2;
-                        }
-                    }
-                }
-            }
-            else {
-                for (let i = 0; i < rows; i++) {
-                    for(let j = 0; j < columns; j++) {
-                        if(this.fields[i][j] === this.pair.cell1) {
-                            this.fields[i][j].state = 0;
-                        }
-                    }
-                }
-            }
-
+        if(this.isBombOnPosition(x, y) === false)
+            this.array[y][x] = field.visible;
+    }
 
     /**
      * TODO: IMPLEMENT THIS
@@ -183,6 +123,7 @@ export class Pexeso {
     }
 
 }
+
     class Coordinate {
         constructor(x,y) {
             this.x = x;

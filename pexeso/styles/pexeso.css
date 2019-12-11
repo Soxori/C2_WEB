@@ -3,6 +3,7 @@
 body {
     height: calc(100vh - 50px);
     font-family: 'Open Sans', sans-serif;
+    background-color: gray;
 }
 
 #game {
@@ -18,7 +19,7 @@ body {
 }
 
 #game > table > tr > td {
-    border: 1px solid #cdd3d7;
+    border: 3px solid #cdd3d7;
     width: 32px;
     height: 32px;
 
@@ -42,13 +43,13 @@ body {
 }
 
 #game > table > tr > td > .hidden {
-    background-color: #eeeeee;
+    background-color: darkslategray;
     cursor: pointer;
     transition: all 0.125s;
 }
 
 #game > table > tr > td > .hidden:hover {
-    background-color: #e6e6e6;
+    background-color: gray;
 }
 
 #game > table > tr > td > .empty {
