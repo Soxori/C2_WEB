@@ -5,7 +5,7 @@ window.onload = () => {
             const PexesoGUI = module.PexesoGUI;
             const component = document.getElementById("game");
 
-            const game = new PexesoGUI(component, 10, 10, 5);
+            const game = new PexesoGUI(component, 4, 4);
             game.draw();
         });
 };

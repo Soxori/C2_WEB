@@ -1,6 +1,6 @@
-export const field = Object.freeze({
-    hidden: 0,
-    visible: 1,
-    flag: 2,
-    question_mark: 3
-});
+export class Field {
+    constructor(state,id) {
+        this.state = state;
+        this.id =id;
+    }
+}
