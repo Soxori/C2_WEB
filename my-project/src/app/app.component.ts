@@ -11,7 +11,7 @@ export class AppComponent {
 
   public cislo1:number;
   public cislo2:number;
-  public vysledek:number;
+  public vysledek;
 
   plus() {
     this.vysledek = this.cislo1 + this.cislo2;
@@ -27,7 +27,9 @@ export class AppComponent {
 
   deleno() {
     this.vysledek = this.cislo1 / this.cislo2;
+    if(this.cislo1 == 0 || this.cislo2 == 0) {
+      this.vysledek = "Nulou se neda delit";
+    }
   }
-
   
 }
