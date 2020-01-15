@@ -1,0 +1,19 @@
+<div *ngIf = " prihlaseni === false" class="loginFalse">
+      <form>
+        <input type="username" name="username"  [(ngModel)] ="username" placeholder="Username"/> <br> <br>
+        <input type="password" name="password" [(ngModel)] ="password" placeholder="Password"/>
+      </form>
+
+      <br>
+
+      <button (click) = "clickedButton()">Log in</button> 
+
+      <br>
+      <div class="wrongText">
+        {{login}}
+      </div>
+</div>
+
+<div *ngIf="prihlaseni === true" class="loginTrue">
+  Logged in
+</div>
