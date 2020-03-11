@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
 
   }
 
-  clickedButton() {
+  clickedButtonLogout() {
     const headers = new HttpHeaders().set('User-Token', Key.access);
     this.http.delete(this.url, {headers}).subscribe(
       (data: any) => {
