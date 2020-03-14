@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-private url = "http://85.160.64.233:3000/session/register";
+private url = "http://134.122.72.178:3000/session/register";
 private username= "";
 private email = "";
 private password = "";

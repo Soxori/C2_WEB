@@ -10,7 +10,7 @@ import Key from '../Key';
 })
 export class LoginComponent implements OnInit {
 
-private url ="http://85.160.64.233:3000/session/login";
+private url ="http://134.122.72.178:3000/session/login";
 private email = "";
 private password = "";
 

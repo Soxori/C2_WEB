@@ -9,7 +9,7 @@ import Key from '../Key';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
-  private url=" http://85.160.64.233:3000/session/logout";
+  private url=" http://134.122.72.178:3000/session/logout";
  
 
   constructor (private http: HttpClient, private router: Router){
