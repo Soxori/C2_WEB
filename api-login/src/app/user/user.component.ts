@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Key from '../Key';
+import {User} from '../models/user.interface';
+import {UserService} from '../users.service';
 
 @Component({
   selector: 'app-user',
@@ -9,26 +9,12 @@ import Key from '../Key';
 })
 export class UserComponent implements OnInit {
 
-private url=" http://134.122.72.178:3000/user";
-private id = '';
-private email = '';
-private username = '';
+  private users: User[] = [];
 
-  constructor(private http: HttpClient) {
-    const headers = new HttpHeaders().set('User-Token', Key.access);
-    this.http.get(this.url, {headers}).subscribe(
-      (data: any) => {
-        this.id = data.id;
-        this.email = data.email;
-        this.username = data.username;
-
-      }, (error) =>{
-  
-    }
-    );
-   }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getUsers().subscribe(i => this.users = i.users);
   }
 
 }
