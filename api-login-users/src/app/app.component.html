@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="user">User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login" id="left">Login<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="logout"><button (click)="clickedButtonLogout()" type="button" class="btn btn-outline-danger">Logout</button></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
