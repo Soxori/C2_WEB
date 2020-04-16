@@ -1,0 +1,26 @@
+<table class="table ">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Id</th>
+      </tr>
+      <tr *ngFor="let user of tempUsersArray">
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.id}}</td>
+      </tr>
+    </table>
+    <nav class="footer" aria-label="Page navigation example">
+      <ul class="pagination pg-blue">
+        <li class="page-item">
+          <button type = "button" class= "page-link" (click) = "previous()">Previous</button>
+        </li>
+        <li class="page-item">
+          <button type= "button" class= "page-link" (click) = "next()">Next</button >
+        </li>
+      </ul>
+    </nav>
+
+

@@ -25,7 +25,7 @@ private header = new HttpHeaders().set("User-Token", Key.access);
     console.log(this.comment);
     this.http.post(this.url, body,{headers: this.header,}).subscribe(
       (data: any) => {
-        this.router.navigate(["/comment-table"]);
+        this.router.navigate(["/user"]);
         }, (error) =>{
 
         }

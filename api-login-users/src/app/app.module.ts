@@ -10,6 +10,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from './comments/comments.component';
+import { UsersComponent } from './users/users.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { CommentsComponent } from './comments/comments.component';
     UserComponent,
     LogoutComponent,
     CommentsComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
