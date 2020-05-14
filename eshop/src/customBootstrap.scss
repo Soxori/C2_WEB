@@ -1,0 +1,11 @@
+$body-bg: rgb(238, 237, 237);
+$theme-colors: (
+  "danger": grey,
+);
+
+$border-radius: 20px;
+$font-family-sans-serif: #000000;
+
+
+
+@import "node_modules/bootstrap/scss/bootstrap";

@@ -1,0 +1,13 @@
+<div class="content">
+    <h1>{{categories.category.name}}</h1>
+    <div class="card"  *ngFor="let product of products" (click) = "getLink(product.id)" style="width: 18rem;">
+      <img class="card-img-top" [src]="'http://kodytek.cz:8080/rest-api/' + product.images[0].miniaturePath" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <h3>{{product.price/100}} Kč</h3>
+        <h6>{{product.ratings}}</h6>
+        <a routerLink="/products" (click) = "getLink(product.id)" class="btn btn-danger">Click</a>
+      </div>
+    </div>
+</div>
