@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { Categories } from './models/Categories.model';
 import {HttpClient} from '@angular/common/http';
-import {CategoriesService} from './Services/categories.service';
+import {CategoriesService} from './services/Categories.service';
 import {Router} from '@angular/router';
 
 @Component({
