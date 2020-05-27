@@ -15,12 +15,14 @@ export class CategoriesComponent implements OnInit {
   public categories: CategoriesDescription;
   public products: Products[];
 
+  
   constructor(private httpClient: HttpClient, private category: CategoriesService, private route: ActivatedRoute, private router: Router) {
   }
 
   getLink(id) {
     this.router.navigate(['/products'], {queryParams: {id}});
   }
+
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
@@ -28,8 +30,8 @@ export class CategoriesComponent implements OnInit {
           .subscribe((category: CategoriesDescription) => {
             this.categories = category;
             this.products = category.products;
+            console.log(category);
           });
       });
-
   }
 }
