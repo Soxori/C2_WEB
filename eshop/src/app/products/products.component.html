@@ -4,6 +4,8 @@
       <img class="card-img-top" [src]="'http://kodytek.cz:8080/rest-api/' + product.images[0].miniaturePath" alt="Card image cap">
     </div>
     <div class="card-body">
-        <a id="description">{{product.description}}</a>
+      <a id="price">Cena: {{product.price/100}}Kč</a>
+      <p>Na skladě se nachází: {{product.unitsOnStock}} kusů<p>
+      <a id="description">{{product.description}}</a>
     </div>
   </div>
